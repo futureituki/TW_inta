@@ -1,0 +1,8 @@
+jest.config.ts
+node_modules/*
+coverage/*
+tailwind.config.js
+eslintrc.js
+src/react-app-env.d.ts
+src/reportWebVitals.ts
+src/setupTests.ts

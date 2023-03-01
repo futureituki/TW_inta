@@ -1,0 +1,38 @@
+version: "3"
+services:
+  frontend:
+    build:
+        context: .
+        dockerfile: ./frontend/Dockerfile
+    container_name: frontend
+    image: frontend
+    volumes:
+      - ./frontend:/app
+    ports:
+      - "3000:3000"
+    tty: true
+    command: yarn start
+  backend:
+    build:
+        context: .
+        dockerfile: ./backend/Dockerfile
+    container_name: backend
+    image: backend
+    volumes:
+      - ./backend:/app
+    ports:
+      - "80:80"
+    tty: true
+    command: yarn dev
+  mongodb:
+    image: mongo:latest
+    ports:
+      - 27017:27017
+    container_name: mongodb
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: pass
+      MONGO_INITDB_DATABASE: template
+    volumes:
+      - ./mongodb/init:/docker-entrypoint-initdb.d
+    command: mongod --auth
