@@ -1,27 +1,5 @@
 version: "3"
 services:
-  frontend:
-    build:
-        context: .
-        dockerfile: ./frontend/Dockerfile
-    container_name: frontend
-    volumes:
-      - ./frontend:/app
-    ports:
-      - "3000:3000"
-    tty: true
-    command: yarn start
-  backend:
-    build:
-        context: .
-        dockerfile: ./backend/Dockerfile
-    container_name: backend
-    volumes:
-      - ./backend:/app
-    ports:
-      - "80:80"
-    tty: true
-    command: yarn dev
   mongodb:
     image: mongo:latest
     ports:
