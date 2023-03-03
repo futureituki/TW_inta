@@ -1,6 +1,6 @@
 import { MongoClient, Db, Collection, Document } from "mongodb"
 
-const url = "mongodb://mongodb:27017"
+const url = "mongodb://127.0.0.1:27017"
 const dbName = "template"
 const auth = { username: "root", password: "pass" }
 
@@ -20,7 +20,7 @@ export class DBHandler implements IDBHandler {
 
   static init = async () => {
     const _client = new MongoClient(url, {
-      auth,
+      // auth,
     })
     await _client.connect()
     const _db = _client.db(dbName)
