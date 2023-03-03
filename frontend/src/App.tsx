@@ -1,5 +1,7 @@
 import axios from "axios"
 import React, { useEffect, useState } from "react"
+import { Route, Routes } from "react-router-dom"
+import { Login } from "./components/page/login"
 
 function App() {
   const [value, setValue] = useState<number | null>(null)
@@ -17,6 +19,10 @@ function App() {
     <div className="font-bold">
       <div>Hello World</div>
       <div>{value}</div>
+      <Routes>
+        <Route path="/login" element={<Login/>} />
+        <Route path="/" element={<></>} />
+      </Routes>
     </div>
   )
 }

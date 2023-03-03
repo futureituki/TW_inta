@@ -1,6 +1,6 @@
 import { MongoClient, Db, Collection, Document } from "mongodb"
 
-const url = "mongodb://mongodb:27017"
+const url = "mongodb://localhost:27017"
 const dbName = "template"
 const auth = { username: "root", password: "pass" }
 
