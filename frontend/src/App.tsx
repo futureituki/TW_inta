@@ -19,7 +19,6 @@ function App() {
 
   return (
     <div className="font-bold">
-      <div>{value}</div>
       <Routes>
         <Route path="/login" element={<Login/>} />
         <Route path="/detail" element={<Detail/>} />
