@@ -17,8 +17,6 @@ function App() {
 
   return (
     <div className="font-bold">
-      <div>Hello World</div>
-      <div>{value}</div>
       <Routes>
         <Route path="/login" element={<Login/>} />
         <Route path="/" element={<></>} />
