@@ -4,5 +4,5 @@ db.createUser({
   pwd: "pass",
   roles: [{ role: "root", db: "admin" }],
 })
-db.createCollection("test")
-db.test.insert({name: "me"})
+db.createCollection("user")
+db.createCollection("article")
