@@ -20,11 +20,34 @@ app.get("/helth-check", async (req, res) => {
   console.log(findResult)
   res.send(JSON.stringify({ test: findResult }))
 })
-app.get("/postArticle", async (req, res) => {
+app.post("/Articles", async (req, res) => {//投稿
+  console.log("test")
+  res.send(JSON.stringify("ok"))
+})
+app.put("/Articles", async (req, res) => {//更新
   console.log("post")
   res.send(JSON.stringify("ok"))
 })
+app.get("/Articles", async (req, res) => {//取得
+  console.log("post")
+  res.send(JSON.stringify("ok"))
+})
+app.delete("/Articles", async (req, res) => {//削除
+  res.send(JSON.stringify("bye"))
+})
 app.get("/login", async (req, res) => {
   console.log("login")
-  res.send(JSON.stringify("ok"))
+  var queryList = req.url.slice(8, req.url.length).split('&')
+  if(queryList.length < 0) res.send(JSON.stringify(false))
+  var id, pass
+  for(var i = 0; i < queryList.length; i++){
+    var splited = queryList[i].split('=')
+    switch(splited[0]){
+      case "id": id = splited[1]; break
+      case "pass": pass = splited[1]; break
+    }
+  }
+  const handler = await DBHandler.init()
+  const findResult = await handler.collection('test').insertOne({user: id, pwd: pass})
+  res.send(JSON.stringify(findResult))
 })

@@ -5,3 +5,4 @@ db.createUser({
   roles: [{ role: "root", db: "admin" }],
 })
 db.createCollection("test")
+db.test.insert({name: "me"})
