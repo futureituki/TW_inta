@@ -13,7 +13,7 @@ app.use((req, res, next) => {
 app.listen(80, () => {
   console.log("Start on port 80.")
 })
-app.post("/Articles", async (req, res) => {//投稿
+app.get("/Articles", async (req, res) => {//投稿 post
   console.log("new")
   var queryList = req.url.slice(11, req.url.length).split('&')
   var id = queryList[0].split('=')[1]
@@ -46,17 +46,17 @@ app.post("/Articles", async (req, res) => {//投稿
     }
   }
   const handler = await DBHandler.init()
-  var count = 5/*検索し、投稿者のarcicleNumを獲得する*/
-  count++
-  handler.collection('user').updateOne({user: id}, {arcicleNum: count})
-  handler.collection('user').insertOne({}) /*投稿する*/
-  res.send(JSON.stringify("true"))
+  var data = await handler.collection('user').findOne({user: id}) /*検索し、投稿者のarcicleCountを獲得する*/
+  var count = data?.articleCount + 1
+  handler.collection('user').updateOne({user: id}, {$set:{articleCount: count}})
+  handler.collection('article').insertOne({user: id, article: count, types: type}) /*投稿する*/
+  res.send(JSON.stringify(true))
 })
 app.put("/Articles", async (req, res) => {//更新
   console.log("update")
   res.send(JSON.stringify("ok"))
 })
-app.get("/Articles", async (req, res) => {//取得
+app.get("/Articles", async (req, res) => {//取得 get
   console.log("get")
   const handler = await DBHandler.init()
   const answer = handler.collection('article').find().toArray() /*検索文にて探す*/
@@ -69,7 +69,7 @@ app.delete("/Articles", async (req, res) => {//削除
   var articleId = queryList[1].split('=')[1]
   const handler = await DBHandler.init()
   handler.collection('article').deleteOne({user: userId, article: articleId})
-  res.send(JSON.stringify("ok"))
+  res.send(JSON.stringify(true))
 })
 app.post("/User", async (req, res) => {//新規登録 post
   console.log("register")
