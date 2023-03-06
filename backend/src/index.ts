@@ -18,34 +18,34 @@ app.post("/Articles", async (req, res) => {//投稿 post
   var queryList = req.url.slice(11, req.url.length).split('&')
   var id = queryList[0].split('=')[1]
   var type = queryList[1].split('=')[1]
-  for(var i = 2; i < queryList.length; i++){
-    var splited = queryList[i].split('=')
-    switch(type){
-      case "競泳":
-        switch(splited[0]){
-          case "種類": var genre = splited[1]; break;
-          case "距離": var distance = splited[1]; break; //自由入力
-          case "タイム": var time = splited[1]; break;
-          case "映像": var camera = splited[1]; break;
-          case "水中": var water = splited[1]; break;
-          case "シーン": var scene = splited[1]; break;
-        }
-        break;
-      case "グッズ":
-        switch(splited[0]){
-          case "ゴーグル": var goggles = splited[1]; break;
-          case "ビート板": var gickBoard = splited[1]; break;
-        }
-        break;
-      case "オフトレ":
-        switch(splited[0]){
-          case "トライランド": var triland = splited[1]; break;
-          case "ウェイト": var weight = splited[1]; break;
-          case "食事": var eat = splited[1]; break;
-        }
-        break;
-    }
-  }
+  // for(var i = 2; i < queryList.length; i++){
+  //   var splited = queryList[i].split('=')
+  //   switch(type){
+  //     case "競泳":
+  //       switch(splited[0]){
+  //         case "種類": var genre = splited[1]; break;
+  //         case "距離": var distance = splited[1]; break; //自由入力
+  //         case "タイム": var time = splited[1]; break;
+  //         case "映像": var camera = splited[1]; break;
+  //         case "水中": var water = splited[1]; break;
+  //         case "シーン": var scene = splited[1]; break;
+  //       }
+  //       break;
+  //     case "グッズ":
+  //       switch(splited[0]){
+  //         case "ゴーグル": var goggles = splited[1]; break;
+  //         case "ビート板": var gickBoard = splited[1]; break;
+  //       }
+  //       break;
+  //     case "オフトレ":
+  //       switch(splited[0]){
+  //         case "トライランド": var triland = splited[1]; break;
+  //         case "ウェイト": var weight = splited[1]; break;
+  //         case "食事": var eat = splited[1]; break;
+  //       }
+  //       break;
+  //   }
+  // }
   const handler = await DBHandler.init()
   var data = await handler.collection('user').findOne({user: id}) /*検索し、投稿者のarcicleCountを獲得する*/
   var count = data?.articleCount + 1
@@ -75,14 +75,8 @@ app.delete("/Articles", async (req, res) => {//削除
 app.post("/User", async (req, res) => {//新規登録 post
   console.log("register")
   var queryList = req.url.slice(7, req.url.length).split('&')
-  var id, pass
-  for(var i = 0; i < queryList.length; i++){
-    var splited = queryList[i].split('=')
-    switch(splited[0]){
-      case "id": id = splited[1]; break
-      case "pass": pass = splited[1]; break
-    }
-  }
+  var id = queryList[0].split('=')[1]
+  var pass = queryList[1].split('=')[1]
   const handler = await DBHandler.init()
   const findResult = await handler.collection('user').find({user: id}).count()
   var flag = (findResult == 0)
@@ -92,14 +86,8 @@ app.post("/User", async (req, res) => {//新規登録 post
 app.put("/User", async (req, res) => {//ログイン put
   console.log("login")
   var queryList = req.url.slice(7, req.url.length).split('&')
-  var id, pass
-  for(var i = 0; i < queryList.length; i++){
-    var splited = queryList[i].split('=')
-    switch(splited[0]){
-      case "id": id = splited[1]; break
-      case "pass": pass = splited[1]; break
-    }
-  }
+  var id = queryList[0].split('=')[1]
+  var pass = queryList[1].split('=')[1]
   const handler = await DBHandler.init()
   const findResult = await handler.collection('user').find({user: id, pwd: pass}).count()
   var flag = (findResult == 1)
