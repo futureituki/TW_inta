@@ -13,7 +13,7 @@ app.use((req, res, next) => {
 app.listen(80, () => {
   console.log("Start on port 80.")
 })
-app.get("/Articles", async (req, res) => {//投稿 post
+app.post("/Articles", async (req, res) => {//投稿 post
   console.log("new")
   var queryList = req.url.slice(11, req.url.length).split('&')
   var id = queryList[0].split('=')[1]
@@ -24,6 +24,7 @@ app.get("/Articles", async (req, res) => {//投稿 post
       case "競泳":
         switch(splited[0]){
           case "種類": var genre = splited[1]; break;
+          case "距離": var distance = splited[1]; break; //自由入力
           case "タイム": var time = splited[1]; break;
           case "映像": var camera = splited[1]; break;
           case "水中": var water = splited[1]; break;
