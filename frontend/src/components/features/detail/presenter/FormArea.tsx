@@ -22,7 +22,7 @@ export const FormArea: FC<Props> = ({ errors, register }) => {
             </BackButton>
             <CreatePageButton onClick={() => console.log("Button clicked!")} color="bg-blue-200" hoverColor="gray-900">
             </CreatePageButton>
-            <MovieBox videoSrc="https://example.com/sample.mp4"></MovieBox>
+            {/* <MovieBox></MovieBox> */}
             <TextField type="text" id="time" placeholder="time" register={register}></TextField>
             <TextField type="text" id="komento" placeholder="komento" register={register}></TextField>
         </div>

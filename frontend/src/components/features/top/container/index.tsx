@@ -1,8 +1,3 @@
-<<<<<<< HEAD
-export const TopContainer = () => {
-  return (
-    <div></div>
-=======
 import axios from "axios"
 import { useEffect, useState } from "react"
 import { SubmitHandler, useForm } from "react-hook-form"
@@ -46,6 +41,5 @@ export const TopContainer = () => {
       <Contents src="https://www.youtube.com/watch?v=SjuvADLALCQ" comment="絶好調"/>
       <Contents src="https://www.youtube.com/watch?v=SjuvADLALCQ" comment="絶好調"/> */}
     </div>
->>>>>>> d2b76d88324c18a5526f692ee51fe0528b15d34c
   )
 }
