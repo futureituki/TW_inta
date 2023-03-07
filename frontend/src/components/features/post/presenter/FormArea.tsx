@@ -13,14 +13,15 @@ type Inputs = {
 type Props = {
     errors: FieldErrors<Inputs>
     register: UseFormRegister<Inputs>
+    userid: string
 }
-export const FormArea: FC<Props> = ({ errors, register }) => {
+export const FormArea: FC<Props> = ({ userid, errors, register }) => {
     return (
         <div>
             <BackButton onClick={() => console.log("Button clicked!")} color="bg-blue-200" hoverColor="gray-900">
                 戻る
             </BackButton>
-            <CreateButton onClick={() => console.log("Button clicked!")} color="bg-blue-200" hoverColor="gray-900">
+            <CreateButton id={userid} type={"該当のtype"} color="bg-blue-200" hoverColor="gray-900">
                 投稿
             </CreateButton>
             <MovieBox videoSrc="https://example.com/sample.mp4"></MovieBox>
