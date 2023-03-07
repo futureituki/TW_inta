@@ -1,3 +1,5 @@
+import axios from "axios"
+import { useEffect, useState } from "react"
 import { SubmitHandler, useForm } from "react-hook-form"
 import { Contents } from "../presenter/Contents"
 import { SearchArea } from "../presenter/SearchArea"
@@ -7,8 +9,21 @@ type Inputs = {
 }
 export const TopContainer = () => {
   const { register, handleSubmit, formState:{errors} } = useForm<Inputs>()
+  const [article, setArticle] = useState()
+  useEffect(() => {
+    const getArticle = async () => {
+      try {
+        await axios.get('localhost:80/Article').then((data) => {
+          // setArticle(data)
+        })
+      } catch(error) {
+        console.log(error)
+      }
+    }
+    getArticle()
+  },[])
   const submit:SubmitHandler<Inputs> = () => {
-    
+
   }
   return (
     <div>
