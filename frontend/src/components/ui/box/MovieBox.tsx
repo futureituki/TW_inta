@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import React from 'react';
 
 type MovieBoxProps = {
@@ -13,4 +14,19 @@ export const MovieBox: React.FC<MovieBoxProps> = ({ videoSrc }) => {
       </video>
     </div>
   );
+=======
+import { FC, ReactNode } from "react"
+
+//size
+type Props = {
+  children:ReactNode
+  className?:string
+}
+export const MovieBox:FC<Props> = ({className, children}) => {
+  return (
+    <div className={[`border-stone-200`,className].join(' ')}>
+      {children}
+    </div>
+  )
+>>>>>>> d2b76d88324c18a5526f692ee51fe0528b15d34c
 }
