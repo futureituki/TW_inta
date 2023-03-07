@@ -8319,10 +8319,14 @@ react-scripts@5.0.1:
     fsevents "^2.3.2"
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 react@^18.0.0, react@^18.2.0, "react@>= 16", react@>=16.8:
 =======
 "react@^16.8.0 || ^17 || ^18", react@^18.0.0, react@^18.2.0, "react@>= 16", react@>=16.8:
 >>>>>>> e146bc4d283633e1a3ae8eb5f31791eb22311382
+=======
+"react@^16.8.0 || ^17 || ^18", react@^18.0.0, react@^18.2.0, "react@>= 16", react@>=16.8:
+>>>>>>> upstream/main
   version "18.2.0"
   resolved "https://registry.npmjs.org/react/-/react-18.2.0.tgz"
   integrity sha512-/3IjMdb2L9QbBdWiW5e3P2/npwMBaU9mHCSCUzNln0ZCYbcfTsGbTJrU/kGemdH2IWmB2ioZ+zkxtmq6g09fGQ==

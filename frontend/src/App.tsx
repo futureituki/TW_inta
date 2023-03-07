@@ -1,5 +1,5 @@
 import axios from "axios"
-import { useEffect, useState } from "react"
+import React, { useEffect, useState } from "react"
 import { Route, Routes } from "react-router-dom"
 import { Login } from "./components/page/login"
 import { Detail } from "./components/page/detail"
@@ -22,7 +22,7 @@ function App() {
 
   return (
     <div className="font-bold">
-      {value}
+      {/* <div>{value}</div> */}
       <Routes>
         <Route path="/login" element={<Login/>} />
         <Route path="/detail" element={<Detail/>} />
